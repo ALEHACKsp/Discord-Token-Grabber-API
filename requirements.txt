@@ -1,0 +1,3 @@
+flask
+discord_webhook
+requests
