@@ -12,7 +12,7 @@ class Validate:
 
         Validates Discord authorization token
         by debunking it using regex string matching and
-        snowflake validation.
+        b64 snowflake to epoch parsing and validation.
 
         Args:
             token (str): token to validate
