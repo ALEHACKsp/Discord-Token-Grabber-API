@@ -1,4 +1,7 @@
 import requests
+import datetime
+
+from core.discord.utils import snowflake_epoch
 
 
 class AuthenticationError(Exception):
@@ -31,7 +34,7 @@ class DiscordUser:
         """ Authenticate user.
 
         Authenticates user through the authorization token
-        and as sets object attributes from the JSON API response body.
+        and sets object attributes from the JSON API response body.
 
         Raises:
             AuthenticationError: if an error occurs while trying to authenticate user
@@ -43,6 +46,13 @@ class DiscordUser:
 
         for k, v in res.json().items():
             self.__setattr__(k, v)
+
+        self.created_at = datetime.datetime.fromtimestamp(
+            snowflake_epoch(int(self.id)) / 1000)
+
+    @property
+    def has_nitro(self) -> bool:
+        return bool(self.premium_type)
 
     def __getattr__(self, item: object) -> object:
         return self[item]

