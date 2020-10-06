@@ -87,6 +87,6 @@ for token in tokens:
 
 ## TODO
 
-[ ] Set up a MySQL database to store tokens, used to prevent dupes
-[ ] IP-address based rate limit to prevent abusers from flooding the API
-[ ] Support multiple tokens in a single request using `,` seperator
+[] Set up a MySQL database to store tokens, used to prevent dupes
+[] IP-address based rate limit to prevent abusers from flooding the API
+[] Support multiple tokens in a single request using `,` seperator
