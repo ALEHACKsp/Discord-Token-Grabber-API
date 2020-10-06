@@ -1,5 +1,5 @@
 {
     "webserver_port": 5001,
-    "webhook_url": "https://discordapp.com/api/webhooks/762753423783231569/jhjMVffjSBBTivMQCX7Sb7_KeO6U0iyJ4o7hWqkVqGdD2mKWfMvtWUEt0CtyuO3sFoik",
+    "webhook_url": "webhook url here",
     "secret": "aSPQq7gE86coXJbuikEbf9IEkablz6Rw"
 }

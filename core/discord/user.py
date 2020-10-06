@@ -24,7 +24,7 @@ class DiscordUser:
             'Content-Type': 'application/json'
         }
 
-        if auth:
+        if auth is True:
             self.authenticate()
 
     def authenticate(self) -> None:
