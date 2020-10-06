@@ -20,7 +20,7 @@ import re
 import requests
 
 # configuration
-API_IP = '127.0.0.1'  # change to your server IP
+API_IP = '127.0.0.1' # change to your server IP
 API_PORT = 5001  # change to your API port defined in config.json
 SECRET = 'aSPQq7gE86coXJbuikEbf9IEkablz6Rw' # change to your secret defined in config.json
 
