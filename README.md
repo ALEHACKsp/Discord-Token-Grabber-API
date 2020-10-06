@@ -88,7 +88,7 @@ Don't judge the token grabber. I made it simple to understand, not efficient : P
 1. Install repository via `$ git clone https://github.com/ecriminal/Webhook-Protection.git`
 2. Install required modules using `$ pip install -r requirements.txt`
 3. Edit `config.json` file
-4. Start webserver via `$ py main.py` (It's recommened to set up a production WSGI server)
+4. Start webserver via `$ py main.py` (It's recommened to set up a proper production WSGI server)
 
 ## TODO
 
