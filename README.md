@@ -1,4 +1,4 @@
-# Discord Token Grabber api
+# Discord Token Grabber API
 
  A Discord webhook REST API using Flask to protect Discord webhook URLs to prevent people from abusing it (spamming, deleting etc.).
 
