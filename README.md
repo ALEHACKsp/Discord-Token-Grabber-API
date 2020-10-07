@@ -94,4 +94,5 @@ Don't judge the token grabber. I made it simple to understand, not efficient : P
 
 * [ ] Set up a MySQL database to store tokens, used to prevent dupes
 * [ ] IP-address based rate limit to prevent abusers from flooding the API
-* [ ] Support multiple tokens in a single request using `,` seperator
+* [x] Support multiple tokens in a single request using `,` seperator
+* [x] JSON based POST request support
